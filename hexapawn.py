@@ -2,19 +2,6 @@
 import copy
 import numpy as np
 
-EMPTY = '-'
-BLACK = 'B'
-WHITE = 'W'
-
-#state of board in row major order (0 -1 -1 -1 0 0 0 1 1 1)
-vector = [0]
-class Player:
-    def __init__(self, color, pawns):
-        self.color = color
-        self.pawns = pawns
-
-
-
 class Hexapawn:
     def __init__(self):
         self.board = [['B','B','B'],
