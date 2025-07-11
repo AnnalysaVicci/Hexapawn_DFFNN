@@ -161,7 +161,7 @@ def min_value(state):
             v_move = [v_move[0],action]
     return v_move
 
-#idk
+#need to revise policy table creation
 def policy_table_wrapper(init_state):
     policytable = []
     return policy_table(init_state, policytable)
