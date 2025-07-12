@@ -129,10 +129,10 @@ def utility(s):
         if (not(black_pawns)) or (s.board[0][0] == 'W') or (s.board[0][1] == 'W') or (s.board[0][2] == 'W'):
             return 1
         if (not white_pawns) or (s.board[2][0] == 'B') or (s.board[2][1] == 'B') or (s.board[2][2] == 'B') or (not possible_actions(s)):
-            return 0
+            return -1
     if s.player == 'B':
         if (not(black_pawns)) or (s.board[0][0] == 'W') or (s.board[0][1] == 'W') or (s.board[0][2] == 'W') or (not possible_actions(s)):
-            return 0
+            return -1
         if (not white_pawns) or (s.board[2][0] == 'B') or (s.board[2][1] == 'B') or (s.board[2][2] == 'B'):
             return 1
         
@@ -198,7 +198,6 @@ def policy_table(state, table):
     new_state = result(state, move)
     print(new_state.board,new_state.player)
     table.append([state.to_vector(), create_policy(state, move)])
-    print('table: ', table)
     return policy_table(new_state, table)
 
 
