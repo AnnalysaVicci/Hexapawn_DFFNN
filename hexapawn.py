@@ -200,11 +200,27 @@ def policy_table(state, table):
     table.append([state.to_vector(), create_policy(state, move)])
     return policy_table(new_state, table)
 
+def all_states(state):
+    state_space = set()
+    state_queue = [state]
+    while state_queue:
+        s = state_queue.pop()
+        if is_terminal(s):
+            continue
+        actions = possible_actions(s)
+        #print(s.to_vector())
+        state_space.add(tuple(s.to_vector()))
+        for action in actions:
+            state_queue.append(result(s,action))
+    return state_space
+
 
 #testing
 game = Hexapawn()
 print(game.board)
 print(game.to_vector())
 #print(minimax(game))
-the_policy_table = policy_table_wrapper(game)
-print('The Policy Table: ', the_policy_table)
+#the_policy_table = policy_table_wrapper(game)
+#print('The Policy Table: ', the_policy_table)
+for s in all_states(game):
+    print(s)
