@@ -1,6 +1,5 @@
 #hexapawn.py
 import copy
-import numpy as np
 
 class Hexapawn:
     def __init__(self):
@@ -166,11 +165,6 @@ def min_value(state):
             v_move = [v_move[0],action]
     return v_move
 
-#need to revise policy table creation
-def policy_table_wrapper(init_state):
-    policytable = []
-    return policy_table(init_state, policytable)
-
 def create_policy(state, action) -> list:
     new_state = copy.deepcopy(state)
     board = new_state.board
@@ -188,11 +182,6 @@ def create_policy(state, action) -> list:
     print(policy,'policy')
     return policy
 
-#policy = (0 0 0 1 1 1 0 0 0)
-#specifies that any of (advance 2 0), (advance 2 1), or (advance 2 2) 
-#will get MAX their optimal expected value.
-#For each state, the policy should include the value of the
-#game as well as every action that achieves that value.
 def policy_table(state, table):
     if is_terminal(state):
         return table
@@ -234,11 +223,7 @@ def build_policy_table(game):
 game = Hexapawn()
 print(game.board)
 print(game.to_vector())
-#print(minimax(game))
-#the_policy_table = policy_table_wrapper(game)
-#print('The Policy Table: ', the_policy_table)
-#for s in all_states(game):
-    #print("all state: ",s)
+
 policy = {}
 x,y = build_policy_table(game)
 for i in range(len(x)):
